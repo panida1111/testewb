@@ -13,10 +13,12 @@
 <div>
     year:
     <select name="" id="year" onchange="create_list_title()">
+    <option value="N/A">N/A</option>
     </select><br>
 
     Movie:
-    <select name="" id="movie">
+    <select name="" id="movie" value="N/A" onchange="create_moive_detail()">
+    <option value="N/A">N/A</option>    
     </select>
 </div>
 
@@ -27,20 +29,45 @@
         
         var ref_year = new Set();
         
-        for(i=0;i<jsonEx.length;i++){
+        for(i=0; i<jsonEx.length; i++){
             ref_year.add(jsonEx[i].year);
         }
             alert("Totel year = "+ ref_year.size);
             const val = ref_year.values();
-            for(i=0;i<ref_year.size;i++){
+            for(i=0; i<ref_year.size; i++){
             var option = document.createElement("option");
                 option.text = val.next().value;;
                 doc.add(option);
         }
 
+
+
             function create_list_title(){
-                alert("Create List Start"); 
+                var doc = document.getElementById("movie");
+                //alert("Create List Start"); 
+                for(i=0;i<jsonEx.length;i++){
+                if (doc.value==jsonEx[i].year){
+                var option = document.createElement("option");
+                option.text = jsonEx[i].title;
+                doc.add(option); 
+                }
+                
+                }
+                
             }
+
+
+
+            function create_moive_detail(){
+
+                var doc = document.getElementById("output");
+                var txt = document.createElement("input");
+                txt.value = "Title";
+                doc.appendChild(txt);
+                
+            }
+            
+            
     </script>
 
 <dir id="output"></dir>
