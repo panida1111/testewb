@@ -43,13 +43,13 @@
 
 
             function create_list_title(){
-                var doc = document.getElementById("movie");
+                var movie = document.getElementById("movie");
                 //alert("Create List Start"); 
                 for(i=0;i<jsonEx.length;i++){
                 if (doc.value==jsonEx[i].year){
                 var option = document.createElement("option");
                 option.text = jsonEx[i].title;
-                doc.add(option); 
+                movie.add(option); 
                 }
                 
                 }
